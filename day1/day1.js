@@ -1,20 +1,13 @@
-const fs = require('fs');
+import fs from 'fs';
+import path from 'path';
 
-require.extensions['.txt'] = function (module, filename) {
-    module.exports = fs.readFileSync(filename, 'utf8');
-};
+import { formatInputToObject } from '../utils.js';
 
-
-const input = require("./input.txt");
-const exampleInput = require("./exampleInput.txt");
-
-function formatInputToObject(rawInput){
-    return rawInput.split("\n\n").map(splitData);
-
-    function splitData(input){
-        return input.split(/\s/);
-    }
-}
+const __dirname = path.dirname('./input.txt');
+const input = fs
+	.readFileSync(path.join(__dirname, 'input.txt'), 'utf8')
+	.toString()
+	.trim()
 
 function part1(rawInput){
     const array = formatInputToObject(rawInput)
@@ -34,4 +27,5 @@ function part2(rawInput){
     
 }
 
-console.log("testInputArray",part2(input))
+console.log("part1",part1(input))
+console.log("part2",part2(input))
