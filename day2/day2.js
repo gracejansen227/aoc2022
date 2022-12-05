@@ -35,6 +35,7 @@ const shapesPart2 = {
 function part1(rawInput){
 	let totalScore = 0;
 	const splitArray = rawInput.map(item => item.split(" "));
+	console.log("splitArray",splitArray)
 	const mapToEnum = splitArray.map(list => list.map(letter => shapes[letter]))
 	mapToEnum.forEach(list => {
 		totalScore += list[1]
